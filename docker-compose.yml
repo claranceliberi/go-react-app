@@ -1,5 +1,14 @@
-version: '3.3'
+version: '3.8'
 services:
+    web:
+        build: .
+        ports:
+        - "8000:3000"
+        volumes:
+        - .:/usr/src/app
+        expose:
+        - "8000"
+        command: air main.go -b 0.0.0.0
     mysql:
         image: mysql
         container_name: mysql
@@ -16,10 +25,10 @@ services:
             MYSQL_ROOT_HOST: '%'
         ports:
             # <Port exposed> : < MySQL Port running inside container>
-            - '88972:3306'
+            - '5972:3306'
         expose:
             # Opens port 3306 on the container
-            - '88972'
+            - '5972'
         # Where our data will be persisted
         volumes:
             - my-db-data:/var/lib/mysql
@@ -27,6 +36,4 @@ services:
 
 # Names our volume
 volumes:
-    my-db-data:
-    mongodb_data_container:
-    pg-db-data: # named volumes can be managed easier using docker-compose
+    my-db-data:  # named volumes can be managed easier using docker-compose
