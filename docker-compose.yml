@@ -2,6 +2,8 @@ version: '3.8'
 services:
     web:
         build: .
+        env_file:
+            - .env
         ports:
         - "8000:3000"
         volumes:
@@ -15,13 +17,13 @@ services:
         # env_file: # using env file instead of env variables
         #     - database.env 
         environment:
-            MYSQL_DATABASE: 'go-react-app'
+            MYSQL_DATABASE: ${DB_NAME}
             # So you don't have to use root, but you can if you like
-            MYSQL_USER: 'liberi'
+            MYSQL_USER: ${DB_USER}
             # You can use whatever password you like
-            MYSQL_PASSWORD: 'liberi'
+            MYSQL_PASSWORD: ${DB_PASSWORD}
             # Password for root access
-            MYSQL_ROOT_PASSWORD: 'liberi'
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
             MYSQL_ROOT_HOST: '%'
         ports:
             # <Port exposed> : < MySQL Port running inside container>

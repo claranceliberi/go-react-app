@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	_, err := gorm.Open(mysql.Open("liberi:liberi@127.0.0.1:5972/go-react-app"), &gorm.Config{})
+	_, err := gorm.Open(mysql.Open("liberi:liberi@tcp(mysql:3306)/go-react-app?charset=utf8&parseTime=True&loc=Local"), &gorm.Config{})
 
 	if err != nil {
 		panic("Could not connect to the database")
