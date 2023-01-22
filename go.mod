@@ -4,7 +4,10 @@ go 1.19
 
 require github.com/gofiber/fiber/v2 v2.41.0
 
-require golang.org/x/crypto v0.5.0 // indirect
+require (
+	github.com/golang-jwt/jwt/v4 v4.4.3 // indirect
+	golang.org/x/crypto v0.5.0 // indirect
+)
 
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
